@@ -4,11 +4,11 @@ from platform import system
 import matplotlib.pyplot as plt
 
 if system() == "Windows":
-    path_euler = "euler-method\\euler-data.json"
-    path_runge4 = "runge-kutta-method\\runge-kutta-data.json"
+    path_euler = "euler-method\\data-euler.json"
+    path_runge4 = "runge-kutta-method\\data-runge-kutta.json"
 else:
-    path_euler = "euler-method/euler-data.json"
-    path_runge4 = "runge-kutta-method/runge-kutta-data.json"
+    path_euler = "euler-method/data-euler.json"
+    path_runge4 = "runge-kutta-method/data-runge-kutta.json"
 
 
 def plot_euler():
@@ -16,6 +16,11 @@ def plot_euler():
         data_euler = json.load(file)
 
     y = data_euler["y"]
-    t = [data_euler["h"] * i for i in range(len(y))]
+    t = data_euler["t"]
 
-    plt.plot(t, y)
+    plt.scatter(t, y)
+    plt.show()
+
+
+if __name__ == "__main__":
+    plot_euler()
