@@ -1,4 +1,7 @@
+#include <iostream>
+
 #include "euler-method.h"
+using namespace std;
 
 void euler_metod(double h, int num_pts, double* y) {
     double ode_func;
@@ -22,7 +25,7 @@ int main() {
     euler_metod(h, num_pts, y);
 
     for (int i = 0; i <= num_pts; i++) {
-        std::cout << "y(" << i << ") = " << y[i] << std::endl;
+        cout << "y(" << i << ") = " << y[i] << endl;
     }
 
     delete[] y;
