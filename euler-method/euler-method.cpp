@@ -3,15 +3,15 @@
 #include "euler-method.h"
 using namespace std;
 
+double ode_func(double t, double y) { return (-2 * y + 1); }
+
 void euler_metod(double h, int num_pts, double* y) {
-    double ode_func;
     double t = h;
 
     for (int i = 0; i < num_pts; i++) {
-        ode_func = -2 * y[i] + 1;
-        y[i + 1] = y[i] + h * ode_func;
+        y[i + 1] = y[i] + h * ode_func(t, y[i]);
 
-        t = t + h;
+        t += h;
     }
 }
 

@@ -1,5 +1,7 @@
 from json import dump
 
+ode_func = lambda t, y: -2 * y + 1
+
 
 def euler_method(h: float, num_pts: int, y0: float):
     t = [(h * i) for i in range(num_pts)]
@@ -7,14 +9,13 @@ def euler_method(h: float, num_pts: int, y0: float):
     y = [y0] + [0 for i in range(num_pts - 1)]
 
     for i in range(1, num_pts):
-        ode_func = -2 * y[i - 1] + 1
-        y[i] = (y[i - 1] + h * ode_func).__round__(5)
+        y[i] = (y[i - 1] + h * ode_func(t[i - 1], y[i - 1])).__round__(5)
 
     return t, y
 
 
 if __name__ == "__main__":
-    h = 0.01
+    h = 0.1
 
     num_pts = 6
 
