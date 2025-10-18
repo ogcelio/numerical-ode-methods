@@ -18,7 +18,7 @@ for h in steps_euler
     
     num_pts = length(t) # coletando numero de pontos do dominio 
     
-    N = Array{Float64}(undef, num_pts + 1) # criando array de quantidades
+    N = Array{Float64}(undef, num_pts) # criando array de quantidades
     N[1] = 1000 # condicao inicial
 
     # METODO
@@ -38,7 +38,7 @@ for h in steps_rk4
     
     num_pts = length(t) # coletando numero de pontos do dominio 
     
-    N = Array{Float64}(undef, num_pts + 1) # criando array de quantidades
+    N = Array{Float64}(undef, num_pts) # criando array de quantidades
     N[1] = 1000 # condicao inicial
 
     # METODO
