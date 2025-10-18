@@ -1,5 +1,3 @@
-from json import dump
-
 ode_func = lambda t, y: -2 * y + 1
 
 
@@ -22,7 +20,3 @@ if __name__ == "__main__":
     y0 = 2
 
     t, y = euler_method(h, num_pts, y0)
-
-    with open("data-euler.json", "w+", encoding="utf8") as file:
-        data = {"y": y, "t": t}
-        dump(data, file, indent=2)
