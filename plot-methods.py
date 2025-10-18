@@ -1,25 +1,27 @@
 import json
-from platform import system
 
 import matplotlib.pyplot as plt
 
-if system() == "Windows":
-    path_euler = "euler-method\\data-euler.json"
-    path_runge4 = "runge-kutta-method\\data-runge-kutta.json"
-else:
-    path_euler = "euler-method/data-euler.json"
-    path_runge4 = "runge-kutta-method/data-runge-kutta.json"
+path_data = "data-methods.json"
+
+with open(path_data, "r", encoding="utf8") as file:
+    data: dict = json.load(file)
 
 
 def plot_euler():
-    with open(path_euler, "r", encoding="utf8") as file:
-        data_euler = json.load(file)
 
-    y = data_euler["y"]
-    t = data_euler["t"]
+    for method_name, method in data.items():
+        fig, ax = plt.subplots(figsize=(9, 8))
+        for step_size, step in method.items():
+            N = step["N"]
+            t = step["t"]
+            ax.plot(t, N, label=f"{method_name}: h = {step_size}")
+            ax.scatter(t, N, s=20)
 
-    plt.scatter(t, y)
-    plt.show()
+        plt.grid(True)
+        plt.legend(loc="best")
+        plt.tight_layout()
+        plt.show()
 
 
 if __name__ == "__main__":
