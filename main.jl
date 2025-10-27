@@ -15,9 +15,9 @@ steps_euler = [0.5, 0.1, 0.05] # passos a serem analisados
 data_euler = Dict()
 for h in steps_euler
     t = collect(0:h:H) # criando array do dominio discreto do tempo
-    
+
     num_pts = length(t) # coletando numero de pontos do dominio 
-    
+
     N = Array{Float64}(undef, num_pts) # criando array de quantidades
     N[1] = 1000 # condicao inicial
 
@@ -26,18 +26,18 @@ for h in steps_euler
     data_euler["$h"] = Dict(
         "N" => N,
         "t" => t
-    )   
+    )
 end
 data["euler"] = data_euler
 
 # executando o metodo de runge kutta
-steps_rk4 = [1, 0.5, 0.1] 
+steps_rk4 = [1, 0.5, 0.1]
 data_rk4 = Dict()
 for h in steps_rk4
     t = collect(0:h:H) # criando array do dominio discreto do tempo
-    
+
     num_pts = length(t) # coletando numero de pontos do dominio 
-    
+
     N = Array{Float64}(undef, num_pts) # criando array de quantidades
     N[1] = 1000 # condicao inicial
 
@@ -46,12 +46,12 @@ for h in steps_rk4
     data_rk4["$h"] = Dict(
         "N" => N,
         "t" => t
-    )   
+    )
 end
 data["rk4"] = data_rk4
 
 # salvando os dados em um arquivo
-import JSON:print
+import JSON: print
 open("data-methods.json", "w") do io
     print(io, data, 2)
 end
