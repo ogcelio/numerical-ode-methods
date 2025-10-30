@@ -1,0 +1,5 @@
+100 execuções
+
+euler 0.288070 segundos
+
+rk4 0.290940 segundos
