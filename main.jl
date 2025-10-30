@@ -22,11 +22,11 @@ for h in steps_euler
     N[1] = 1000 # condicao inicial
 
     # METODO
-    euler.method(ode_func, h, num_pts, N)
+    euler.method(ode_func, h, num_pts, N) # executando o método
     data_euler["$h"] = Dict(
         "N" => N,
         "t" => t
-    )
+    ) # salvando os dados do passo na variável
 end
 data["euler"] = data_euler
 
@@ -42,11 +42,11 @@ for h in steps_rk4
     N[1] = 1000 # condicao inicial
 
     # METODO
-    rk4.method(ode_func, h, num_pts, N)
+    rk4.method(ode_func, h, num_pts, N) # executando o método
     data_rk4["$h"] = Dict(
         "N" => N,
         "t" => t
-    )
+    ) # salvando os dados do passo na variável
 end
 data["rk4"] = data_rk4
 
